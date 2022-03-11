@@ -1,0 +1,6 @@
+  Terraform stores the state of the infrastructure that is being created 
+  from the TF files.
+  
+  This state allows terraform to map real world resource to your existing config.
+  
+  -> terraform.tfstate file is stored in the root of terraform project.
