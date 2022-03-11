@@ -1,4 +1,5 @@
 terraform init -> initialize terraform directory
+terraoform init -upgrade -> upgrade or downgrade version
 terraform plan -> displays the resource info that will be created
 terraform apply -> creates the resource
 terraform destroy -> destroys all resources
