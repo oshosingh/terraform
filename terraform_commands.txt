@@ -1,0 +1,5 @@
+terraform init -> initialize terraform directory
+terraform plan -> displays the resource info that will be created
+terraform apply -> creates the resource
+terraform destroy -> destroys all resources
+terraform destroy -target aws_instance.ec2 -> destroys specified target, combination of resource_type + local_resource_name
