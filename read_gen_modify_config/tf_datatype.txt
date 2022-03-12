@@ -7,3 +7,26 @@ variable "image_id" {
 
 If no type constraint is set then a value of any type is accepted
 
+============================================================
+Fetching data from variable
+
+
+vars.tf * 
+
+variable "list" {
+    type = list
+    default = ["t2.small", "t2.medium"]
+}
+
+variable "types" {
+    type = map
+    default = {
+       us-east-1: "t2.micro"
+       us-west-2: "t2.nano"
+       ap-south-1: t2.small
+    }
+}
+
+for referencing map: var.types["us-east-1"]
+for referencing list: var.list[0]
+
