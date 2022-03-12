@@ -1,0 +1,29 @@
+The count parameter on resource can simplify configurations and let you scale resources by simply
+incrementing a number.
+
+resource "aws_instance" "instance-1" {
+    ami = "image"
+    instance_type = "t2.micro"
+    count = 3
+}
+
+In resource blocks where count is set, an additional count object is available in expressions, so you can
+modify the configuration of each instance.
+
+This object has one attr:
+count.index = The distinct index number (starting with 0) corresponding to this instance
+
+resource "aws_instance" "instance" {
+    ami = "image"
+    instance_type = "t2.micro"
+    count = 3
+    name: var.instance_name[count.index]
+}
+
+
+Give nice names when working with count :
+
+variable "instance_name" {
+    type = list
+    default = ["dev", "stage", "prod"]
+}
