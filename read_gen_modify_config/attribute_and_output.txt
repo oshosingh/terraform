@@ -1,0 +1,27 @@
+Terraform has capability to output the attribute of a resource with the output values.
+An outputed attributes can not only be used for the user reference but it can also act
+as a input to other resources being created via terraform.
+
+attribute.tf* 
+
+provider "aws" {
+  region = "us-east-1"
+  access_key = "x"
+  secret_key = "b"
+}
+
+resource "aws_eip" "ip" {
+  vpc = true
+}
+
+output "eip" {
+  value = aws_eip.ip.public_ip     # . operator for getting attr
+}
+
+resource "aws_s3_bucket" "mys3" {
+  bucket = "bucket name"
+}
+
+output "mys3bucket" {
+  value = aws_s3_bucket.mys3.bucket_domain_name
+}
