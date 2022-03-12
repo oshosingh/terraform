@@ -1,0 +1,27 @@
+We can have a cental source from which we can import the values from.
+
+vars.tf *
+variable "vpn_ip" {
+    default = "116.10.1.1/32"
+}
+
+varsdemo.tf *
+resource "aws_security_group" "allow_http" {
+  name        = "allow_http"
+
+  ingress {
+    description      = "Http from VPC 1"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [var.vpn_ip]
+  }
+  
+  ingress {
+    description      = "Http from VPC 2"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [var.vpn_ip]
+  }
+}
