@@ -1,0 +1,9 @@
+The type argument in a variable block allows you to restrict the type of value that will be accepted as the
+value for a variable.
+
+variable "image_id" {
+    type = string, number, list, map, bool
+}
+
+If no type constraint is set then a value of any type is accepted
+
