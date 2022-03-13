@@ -2,9 +2,11 @@ terraform init -> initialize terraform directory
 terraoform init -upgrade -> upgrade or downgrade version
 
 terraform plan -> displays the resource info that will be created
-terraform plan -refresh=false, prevent terraform from querying the current satet
+terraform plan -refresh=false, prevent terraform from querying the current stete
+terraform plan -target=resource
 
-terraform apply -> creates the resource
+
+terraform apply -auto-approve -> creates the resource
 terraform destroy -> destroys all resources
 terraform destroy -target aws_instance.ec2 -> destroys specified target, combination of resource_type + local_resource_name
 
