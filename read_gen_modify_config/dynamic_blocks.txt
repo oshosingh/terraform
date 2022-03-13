@@ -1,0 +1,30 @@
+challengge: 
+In many of the use-cases, there are repeatable nested blocks that needs to be defined.
+This can lead to a long code and it can be difficult to manage in a longer time.
+
+Dynamic Blocks:
+Dynamic block allows us to dynamically construct repeatable nested blocks which is supported inside
+resource, data, provider, and provisioner blocks.
+
+
+variable "sg_ports" {
+    type: list(number)
+    description: "list of ingress ports"
+    default = [8000,8001,8002,8003]
+}
+
+resource "aws_security_group" "dynamicsg" {
+    name = "dynamic-sg"
+    description = "ingress"
+    
+    dynamic "ingress" {
+        for_each = var.sg_ports
+        iterator = port  # define iterator and use, default is label of dynamic block
+        content {
+            from_port = ingress.value (port.value)
+            to_port = ingress.value
+            protocol = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        }
+    }
+}
