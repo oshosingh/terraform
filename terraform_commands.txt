@@ -14,6 +14,16 @@ terraform validate
 -> It can check various aspects including unsupoorted arg,undeclared vars and others.
 ----------------------------------------------------------
 
+terraform plan -out=path  # save plan into a file
+    -> terraform apply path  # execute saved plan
+    
+terraform output iam_arn [ (use output type label) to get output of resource ]
+
+# Terraform settings 
+terraform {
+    required_version = "> 0.12.0"
+}
+
 
 
 
