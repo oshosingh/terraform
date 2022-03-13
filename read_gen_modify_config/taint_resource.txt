@@ -1,0 +1,23 @@
+You have created a new resource via terraform.
+Users have made a lot of manual changes(bot infrastructure and inside the server)
+Two ways to deal with this: Import the changes to terraform / Delete and Recreate the resource
+
+The terraform taint command manually marks a terraform managed resource as tainted, forcing it to
+be destroyed and recreated on the next apply
+
+> command = terraform taint resource_name.local_resource_name
+> terraform import to get the current state of resource
+
+
+---------------------------------------------
+1. This command will not modify infra, but does modify the state file in order to mark a 
+   resource as tainted.
+   
+2. Once a resource is marked as tainted, the next plan will show that the resource will be
+   destroyed and recreated and the next apply will implement this change.
+   
+3. Note that tainting a resource for recreation may affect resources that depend on the newly
+   tainted resource.
+   
+   For e.g., ec2 instance gets a new ip when recreated then if their is a dns resource then 
+             it should be updated to point to the new ip.
