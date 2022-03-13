@@ -1,0 +1,19 @@
+The Terraform language includes a number of built-in-functions that you can use to transform and combine values.
+The general syntax for function calls is a function name followed by comma-separated arguments in parentheses.
+
+function(argument1, argument2)
+> max(1,2,3) = 3
+
+The Terraform language does not support user-defined functions, and so only the functions built in tot the 
+language are available for use:
+
+- Numeric
+- String
+- Collections
+- Encoding
+- Filesystem
+- Date and Time
+- Hash and Crypto
+- IP Network
+- Type Conversion
+
