@@ -8,7 +8,7 @@ There are two main types of provisioner:
 local-exec provisioner allow us to invoke local executable after resource is created
 
 provisioner "local-exec" {
-    command = "echo ${aws_instance.web.private-ip} >> private_ips.txt"
+    command = "echo ${aws_instance.myec2.private-ip} >> private_ips.txt"
 }
 
 **** local exec can be used to run ansible-playbooks
