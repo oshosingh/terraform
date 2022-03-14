@@ -1,0 +1,30 @@
+The zipmap function constructs a map from a list of keys and a corresponding list of values
+
+keys = [pineapple, orange, strawberry]
+values = [yellow, oraneg, red]
+
+zipmap = {
+    pineapple = orange
+    orange = orange
+    strawberry = red
+} 
+
+Usecase :
+
+resource "aws_iam_user" "lb" {
+    name = "iamuser.${count.index}"
+    count = 3
+    path = "/system/"
+}
+
+output "arns" {
+    value = aws_iam_user.lb[*].arn
+}
+
+output "name" {
+    value = aws_iam_user.lb[*].name
+}
+
+output "combined" {
+    value = zipmap(aws_iam_user.lb[*].arn, aws_iam_user.lb[*].name)
+}
