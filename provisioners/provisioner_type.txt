@@ -1,0 +1,15 @@
+Terraform has capability to turn provisioners both at the time of resource creation as well as destruction.
+
+There are two main types of provisioner:
+1. Local Exec
+2. Remote Exec
+3. etc. (see docs)
+
+local-exec provisioner allow us to invoke local executable after resource is created
+
+provisioner "local-exec" {
+    command = "echo ${aws_instance.web.private-ip} >> private_ips.txt"
+}
+
+**** local exec can be used to run ansible-playbooks
+
