@@ -5,6 +5,7 @@ Import this resource and apply :
 
 module "myec2_module" {
     source = "/proj/a/resource/ec2"
+    instance_type = "t2.large"   # overrides the value inside variable
 }
 
 Increases readibility.
