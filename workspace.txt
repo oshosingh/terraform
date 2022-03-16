@@ -1,0 +1,16 @@
+resource "aws_instance" "myec2" {
+    ami = "image"
+    instance_type = lookup(var.instance_type,terraform.workspace)
+                   # lookup method to get instance type based on selected workspace
+}
+
+variable "instance_type" {
+    type = "map"
+    
+    default = {
+        default = "t2.nano"
+        dev = "t2.micro"
+        prd = "t2.large"
+        # keys = workspaces
+    }
+}
