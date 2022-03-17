@@ -1,0 +1,14 @@
+Store terrform.tfstate file into s3 or any other place but 
+don't push it to central repositories.
+
+backend.tf *
+
+terraform {
+    backend "s3" {
+        bucket = "b"
+        key = "key"
+        region = "region"
+        access_key= "ak"
+        secret_key = "sk"
+    }
+}
