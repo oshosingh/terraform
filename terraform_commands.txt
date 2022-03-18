@@ -31,7 +31,8 @@ terraform {
 
 terraform workspace -h(help) list, create, update,delete
 terraform workspace new dev (create)
+------------------------------------------------------------
 
-
+terraform import aws_instance.myec2 <instance-id>
 
 
