@@ -1,0 +1,41 @@
+1. Use aws cli and store access and secret key in .aws/config folder and remove the keys from provider section.
+
+2. Using Alias
+   
+   provider "aws" {
+      region = "us-west-1"
+   }
+   
+   provider "aws" {
+      alias = "mumbai"
+      region = "ap-south-1"
+   }
+   
+   resource "aws_eip" "myip" {
+      vpc = "true"
+      provider = "aws.mumbai"  # provider.alias_name
+   }
+
+3. Multiple AWS profiles case
+   
+   provider "aws" {
+      alias = "mumbai"
+      region = "ap-south-1"
+      profile = "account02"
+   }
+   
+4. Terraform with STS ( Assume Role )
+   
+   resource "aws_eip" "myeip" {
+      vpc = "true"
+   }
+   
+   provider "aws" {
+      region = "us-west-1"
+      assume_role {
+          role_arn = "arn"
+          session_name = "test"
+      }
+   }
+   
+   
