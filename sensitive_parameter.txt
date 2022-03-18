@@ -1,0 +1,16 @@
+With organization managing their entire infrastructure in terraform, it is likely that you will see some
+sensitive information embedded in the code.
+
+When working with a field that contains information likely to be considered sensitive, it is best to set the
+Sensitive property on its schema to true.
+
+locals{
+    db_password {
+        admin = "password"
+    } 
+}
+
+output "db_password" {
+    value = local.db_password
+    sensitive = true
+}
